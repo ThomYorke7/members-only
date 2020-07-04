@@ -1,0 +1,15 @@
+div.card-columns.justify-content-center
+    each message in messages
+        div.card.mb-3
+            div.card-header.d-flex.justify-content-between.align-items-center= message.title
+                if currentUser && currentUser.admin == true
+                    form(action="/message/delete/"+message._id, method="post")
+                        input(type="hidden", name="messageid", required=true, value=message._id)
+                        button.btn.p-0(type="submit") Delete
+            div.card-body
+                blockquote.blockquote.mb-0
+                    p= message.text
+                    unless currentUser
+                        footer.blockquote-footer ********, #{message.timestamp}
+                    else if currentUser
+                        footer.blockquote-footer #{message.user.username}, #{message.timestamp}

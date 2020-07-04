@@ -1,0 +1,24 @@
+extends layout
+
+block content
+  div.container-fluid 
+    div.row.align-items-center.p-3
+      div.col-md
+        h1 The Privée
+        p Welcome to the Club
+      if !currentUser 
+        div.col-md.d-flex.justify-content-end
+          a(href="/users/register") Register
+          a.ml-3(href="/users/login") Login
+      if currentUser && currentUser.admin == false
+        div.col-md.d-flex.justify-content-end.align-items-center
+          p.m-0 Hello, #{currentUser.firstname}
+          a.ml-3(href="/users/admin") Become an Admin
+          a.ml-4.mr-3(href="/users/logout") Logout
+          include create_message.jade
+      if currentUser && currentUser.admin == true
+        div.col-md.d-flex.justify-content-end.align-items-center
+          p.m-0 Hello, #{currentUser.firstname}
+          a.ml-4.mr-3(href="/users/logout") Logout
+          include create_message.jade
+    include show_message.jade

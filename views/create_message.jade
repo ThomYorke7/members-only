@@ -1,0 +1,12 @@
+div.dropdown
+    button.px-2.btn.btn-secondary.dropdown-toggle(type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false") Create a new Message
+    div.dropdown-menu
+        form.px-3.py-2(method="post" action="/message")
+            div.form-group
+                label(for="title") Title
+                input.form-control(type="text" id="title" name="title")
+            div.form-group
+                label(for="title") Message
+                textarea.form-control(id="message" name="text")
+            div.text-center
+                button.btn.btn-primary(type="submit") Send

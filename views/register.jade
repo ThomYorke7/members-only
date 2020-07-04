@@ -1,0 +1,33 @@
+extends layout
+
+block content
+  nav(aria-label="breadcrumb")
+  ol.breadcrumb
+    li.breadcrumb-item
+      a(href="/") Home
+    li.breadcrumb-item.active(aria-current="page") Register
+  div.row.mt-5
+    div.col-md-4.m-auto
+      div.card.card-body
+        h1.text-center.mb-3 Sign In
+        form(action="/users/register", method="post")
+          include partials.jade
+          div.form-group
+            label(for="firstname") First Name
+            input.form-control(type="text", name="firstname", value = firstname !== undefined ? firstname : "")
+          div.form-group
+            label(for="lastname") Last Name
+            input.form-control(type="text", name="lastname", value = lastname !== undefined ? lastname : "")
+          div.form-group
+            label(for="username") Username
+            input.form-control(type="text", name="username", value = username !== undefined ? username : "")
+          div.form-group
+            label(for="password") Password
+            input.form-control(type="password", name="password")
+          div.form-group
+            label(for="password") Confirm Password
+            input.form-control(type="password", name="password2")
+          div.text-center
+            button.btn.btn-primary.mb-3 Sign In
+            <p>Have an account? <a href="/users/login">Login Here</a></p>
+  
