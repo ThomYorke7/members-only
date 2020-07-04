@@ -13,6 +13,7 @@ var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 
 var app = express();
+const port = process.env.PORT || 3000;
 app.use(helmet());
 
 // Passport config
@@ -77,6 +78,10 @@ app.use(function (err, req, res, next) {
   // render the error page
   res.status(err.status || 500);
   res.render('error');
+});
+
+app.listen(port, () => {
+  console.log(`The server is running on port: ${port}`);
 });
 
 module.exports = app;
