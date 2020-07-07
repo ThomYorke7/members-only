@@ -15,10 +15,10 @@ block content
           p.m-0 Hello, #{currentUser.firstname}
           a.ml-3(href="/users/admin") Become an Admin
           a.ml-4.mr-3(href="/users/logout") Logout
-          include create_message.jade
+          include create_message.pug
       if currentUser && currentUser.admin == true
         div.col-md.d-flex.justify-content-end.align-items-center
           p.m-0 Hello, #{currentUser.firstname}
           a.ml-4.mr-3(href="/users/logout") Logout
-          include create_message.jade
-    include show_message.jade
+          include create_message.pug
+    include show_message.pug
